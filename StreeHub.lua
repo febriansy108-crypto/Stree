@@ -1,21 +1,21 @@
 local HttpService = game:GetService("HttpService")
 
-if not isfolder("Triplesixxx") then
-    makefolder("Triplesixxx")
+if not isfolder("StreeHub") then
+    makefolder("StreeHub")
 end
-if not isfolder("Triplesixxx/Config") then
-    makefolder("Triplesixxx/Config")
+if not isfolder("StreeHub/Config") then
+    makefolder("StreeHub/Config")
 end
 
-local gameName   = tostring(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
-gameName         = gameName:gsub("[^%w_ ]", "")
-gameName         = gameName:gsub("%s+", "_")
+local gameName = tostring(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
+gameName = gameName:gsub("[^%w_ ]", "")
+gameName = gameName:gsub("%s+", "_")
 
-local ConfigFile = "Triplesixxx/Config/Triplesixxx_" .. gameName .. ".json"
+local ConfigFile = "StreeHub/Config/StreeHub_" .. gameName .. ".json"
 
-ConfigData       = {}
-Elements         = {}
-CURRENT_VERSION  = nil
+ConfigData = {}
+Elements = {}
+CURRENT_VERSION = nil
 
 function SaveConfig()
     if writefile then
@@ -53,46 +53,46 @@ function LoadConfigElements()
 end
 
 local Icons = {
-    player    = "rbxassetid://12120698352",
-    web       = "rbxassetid://137601480983962",
-    bag       = "rbxassetid://8601111810",
-    shop      = "rbxassetid://4985385964",
-    cart      = "rbxassetid://128874923961846",
-    plug      = "rbxassetid://137601480983962",
-    settings  = "rbxassetid://70386228443175",
-    loop      = "rbxassetid://122032243989747",
-    gps       = "rbxassetid://17824309485",
-    compas    = "rbxassetid://125300760963399",
-    gamepad   = "rbxassetid://84173963561612",
-    boss      = "rbxassetid://13132186360",
-    scroll    = "rbxassetid://114127804740858",
-    menu      = "rbxassetid://6340513838",
-    crosshair = "rbxassetid://12614416478",
-    user      = "rbxassetid://108483430622128",
-    stat      = "rbxassetid://12094445329",
-    eyes      = "rbxassetid://14321059114",
-    sword     = "rbxassetid://82472368671405",
-    discord   = "rbxassetid://94434236999817",
-    star      = "rbxassetid://107005941750079",
-    skeleton  = "rbxassetid://17313330026",
-    payment   = "rbxassetid://18747025078",
-    scan      = "rbxassetid://109869955247116",
     alert     = "rbxassetid://73186275216515",
-    question  = "rbxassetid://17510196486",
-    idea      = "rbxassetid://16833255748",
-    strom     = "rbxassetid://13321880293",
-    water     = "rbxassetid://100076212630732",
+    bag       = "rbxassetid://8601111810",
+    boss      = "rbxassetid://13132186360",
+    cart      = "rbxassetid://128874923961846",
+    compas    = "rbxassetid://125300760963399",
+    crosshair = "rbxassetid://12614416478",
     dcs       = "rbxassetid://15310731934",
-    start     = "rbxassetid://108886429866687",
-    next      = "rbxassetid://12662718374",
-    rod       = "rbxassetid://103247953194129",
+    discord   = "rbxassetid://94434236999817",
+    eyes      = "rbxassetid://14321059114",
     fish      = "rbxassetid://97167558235554",
-    handshake      = "rbxassetid://118812884427306",
-    pinmap      = "rbxassetid://134722365781829",
-    map      = "rbxassetid://115690060447581",
+    fishing   = "rbxassetid://82305997222115",
+    fishings  = "rbxassetid://74455513763045",
+    gamepad   = "rbxassetid://84173963561612",
+    gps       = "rbxassetid://17824309485",
+    handshake = "rbxassetid://118812884427306",
     home      = "rbxassetid://135016593915894",
-    fishing      = "rbxassetid://82305997222115",
-    fishings      = "rbxassetid://74455513763045",
+    idea      = "rbxassetid://16833255748",
+    loop      = "rbxassetid://122032243989747",
+    map       = "rbxassetid://115690060447581",
+    menu      = "rbxassetid://6340513838",
+    next      = "rbxassetid://12662718374",
+    payment   = "rbxassetid://18747025078",
+    pinmap    = "rbxassetid://134722365781829",
+    player    = "rbxassetid://12120698352",
+    plug      = "rbxassetid://137601480983962",
+    question  = "rbxassetid://17510196486",
+    rod       = "rbxassetid://103247953194129",
+    scan      = "rbxassetid://109869955247116",
+    scroll    = "rbxassetid://114127804740858",
+    settings  = "rbxassetid://70386228443175",
+    shop      = "rbxassetid://4985385964",
+    skeleton  = "rbxassetid://17313330026",
+    star      = "rbxassetid://107005941750079",
+    start     = "rbxassetid://108886429866687",
+    stat      = "rbxassetid://12094445329",
+    strom     = "rbxassetid://13321880293",
+    sword     = "rbxassetid://82472368671405",
+    user      = "rbxassetid://108483430622128",
+    water     = "rbxassetid://100076212630732",
+    web       = "rbxassetid://137601480983962",
 }
 
 local UserInputService = game:GetService("UserInputService")
@@ -103,9 +103,7 @@ local CoreGui = game:GetService("CoreGui")
 local viewport = workspace.CurrentCamera.ViewportSize
 
 local function isMobileDevice()
-    return UserInputService.TouchEnabled
-        and not UserInputService.KeyboardEnabled
-        and not UserInputService.MouseEnabled
+    return UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled
 end
 
 local isMobile = isMobileDevice()
@@ -234,8 +232,8 @@ function CircleClick(Button, X, Y)
     spawn(function()
         Button.ClipsDescendants = true
         local Circle = Instance.new("ImageLabel")
-        Circle.Image = "rbxassetid://266543268"
-        Circle.ImageColor3 = Color3.fromRGB(255, 0, 0)
+        Circle.Image = "rbxassetid://122683047852451"
+        Circle.ImageColor3 = Color3.fromRGB(57, 255, 20)
         Circle.ImageTransparency = 0.8999999761581421
         Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Circle.BackgroundTransparency = 1
@@ -256,8 +254,7 @@ function CircleClick(Button, X, Y)
         end
 
         local Time = 0.5
-        Circle:TweenSizeAndPosition(UDim2.new(0, Size, 0, Size), UDim2.new(0.5, -Size / 2, 0.5, -Size / 2), "Out", "Quad",
-            Time, false, nil)
+        Circle:TweenSizeAndPosition(UDim2.new(0, Size, 0, Size), UDim2.new(0.5, -Size / 2, 0.5, -Size / 2), "Out", "Quad", Time, false, nil)
         for i = 1, 10 do
             Circle.ImageTransparency = Circle.ImageTransparency + 0.01
             wait(Time / 10)
@@ -266,25 +263,28 @@ function CircleClick(Button, X, Y)
     end)
 end
 
-local Triplesixxx = {}
-function Triplesixxx:MakeNotify(NotifyConfig)
+local StreeHub = {}
+
+function StreeHub:MakeNotify(NotifyConfig)
     local NotifyConfig = NotifyConfig or {}
-    NotifyConfig.Title = NotifyConfig.Title or "Triplesixxx"
+    NotifyConfig.Title = NotifyConfig.Title or "StreeHub"
     NotifyConfig.Description = NotifyConfig.Description or "Notification"
     NotifyConfig.Content = NotifyConfig.Content or "Content"
-    NotifyConfig.Color = NotifyConfig.Color or Color3.fromRGB(255, 0, 0)
+    NotifyConfig.Color = NotifyConfig.Color or Color3.fromRGB(57, 255, 20)
     NotifyConfig.Time = NotifyConfig.Time or 0.5
     NotifyConfig.Delay = NotifyConfig.Delay or 5
     local NotifyFunction = {}
+    
     spawn(function()
         if not CoreGui:FindFirstChild("NotifyGui") then
-            local NotifyGui = Instance.new("ScreenGui");
+            local NotifyGui = Instance.new("ScreenGui")
             NotifyGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
             NotifyGui.Name = "NotifyGui"
             NotifyGui.Parent = CoreGui
         end
+        
         if not CoreGui.NotifyGui:FindFirstChild("NotifyLayout") then
-            local NotifyLayout = Instance.new("Frame");
+            local NotifyLayout = Instance.new("Frame")
             NotifyLayout.AnchorPoint = Vector2.new(1, 1)
             NotifyLayout.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             NotifyLayout.BackgroundTransparency = 0.9990000128746033
@@ -294,35 +294,34 @@ function Triplesixxx:MakeNotify(NotifyConfig)
             NotifyLayout.Size = UDim2.new(0, 320, 1, 0)
             NotifyLayout.Name = "NotifyLayout"
             NotifyLayout.Parent = CoreGui.NotifyGui
+            
             local Count = 0
             CoreGui.NotifyGui.NotifyLayout.ChildRemoved:Connect(function()
                 Count = 0
                 for i, v in CoreGui.NotifyGui.NotifyLayout:GetChildren() do
-                    TweenService:Create(
-                        v,
-                        TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-                        { Position = UDim2.new(0, 0, 1, -((v.Size.Y.Offset + 12) * Count)) }
-                    ):Play()
+                    TweenService:Create(v, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), { Position = UDim2.new(0, 0, 1, -((v.Size.Y.Offset + 12) * Count)) }):Play()
                     Count = Count + 1
                 end
             end)
         end
+        
         local NotifyPosHeigh = 0
         for i, v in CoreGui.NotifyGui.NotifyLayout:GetChildren() do
             NotifyPosHeigh = -(v.Position.Y.Offset) + v.Size.Y.Offset + 12
         end
-        local NotifyFrame = Instance.new("Frame");
-        local NotifyFrameReal = Instance.new("Frame");
-        local UICorner = Instance.new("UICorner");
-        local DropShadowHolder = Instance.new("Frame");
-        local DropShadow = Instance.new("ImageLabel");
-        local Top = Instance.new("Frame");
-        local TextLabel = Instance.new("TextLabel");
-        local UICorner1 = Instance.new("UICorner");
-        local TextLabel1 = Instance.new("TextLabel");
-        local Close = Instance.new("TextButton");
-        local ImageLabel = Instance.new("ImageLabel");
-        local TextLabel2 = Instance.new("TextLabel");
+        
+        local NotifyFrame = Instance.new("Frame")
+        local NotifyFrameReal = Instance.new("Frame")
+        local UICorner = Instance.new("UICorner")
+        local DropShadowHolder = Instance.new("Frame")
+        local DropShadow = Instance.new("ImageLabel")
+        local Top = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+        local UICorner1 = Instance.new("UICorner")
+        local TextLabel1 = Instance.new("TextLabel")
+        local Close = Instance.new("TextButton")
+        local ImageLabel = Instance.new("ImageLabel")
+        local TextLabel2 = Instance.new("TextLabel")
 
         NotifyFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
         NotifyFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -436,17 +435,14 @@ function Triplesixxx:MakeNotify(NotifyConfig)
         else
             NotifyFrame.Size = UDim2.new(1, 0, 0, TextLabel2.AbsoluteSize.Y + 40)
         end
+        
         local waitbruh = false
         function NotifyFunction:Close()
             if waitbruh then
                 return false
             end
             waitbruh = true
-            TweenService:Create(
-                NotifyFrameReal,
-                TweenInfo.new(tonumber(NotifyConfig.Time), Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
-                { Position = UDim2.new(0, 400, 0, 0) }
-            ):Play()
+            TweenService:Create(NotifyFrameReal, TweenInfo.new(tonumber(NotifyConfig.Time), Enum.EasingStyle.Back, Enum.EasingDirection.InOut), { Position = UDim2.new(0, 400, 0, 0) }):Play()
             task.wait(tonumber(NotifyConfig.Time) / 1.2)
             NotifyFrame:Destroy()
         end
@@ -454,83 +450,73 @@ function Triplesixxx:MakeNotify(NotifyConfig)
         Close.Activated:Connect(function()
             NotifyFunction:Close()
         end)
-        TweenService:Create(
-            NotifyFrameReal,
-            TweenInfo.new(tonumber(NotifyConfig.Time), Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
-            { Position = UDim2.new(0, 0, 0, 0) }
-        ):Play()
+        
+        TweenService:Create(NotifyFrameReal, TweenInfo.new(tonumber(NotifyConfig.Time), Enum.EasingStyle.Back, Enum.EasingDirection.InOut), { Position = UDim2.new(0, 0, 0, 0) }):Play()
         task.wait(tonumber(NotifyConfig.Delay))
         NotifyFunction:Close()
     end)
     return NotifyFunction
 end
 
-function triplesixxx(msg, delay, color, title, desc)
-    return Triplesixxx:MakeNotify({
-        Title = title or "Triplesixxx",
-        Description = desc or "Notification",
-        Content = msg or "Content",
-        Color = color or Color3.fromRGB(255, 0, 0),
-        Delay = delay or 4
-    })
-end
-
-function Triplesixxx:Window(GuiConfig)
-    GuiConfig              = GuiConfig or {}
-    GuiConfig.Title        = GuiConfig.Title or "Triplesixxx"
-    GuiConfig.Footer       = GuiConfig.Footer or "Triplesixxx :3"
-    GuiConfig.Color        = GuiConfig.Color or Color3.fromRGB(255, 0, 0)
+function StreeHub:Window(GuiConfig)
+    GuiConfig = GuiConfig or {}
+    GuiConfig.Title = GuiConfig.Title or "StreeHub"
+    GuiConfig.Footer = GuiConfig.Footer or "StreeHub"
+    GuiConfig.Color = GuiConfig.Color or Color3.fromRGB(57, 255, 20)
     GuiConfig["Tab Width"] = GuiConfig["Tab Width"] or 120
-    GuiConfig.Version      = GuiConfig.Version or 1
+    GuiConfig.Version = GuiConfig.Version or 1
+    GuiConfig.Theme = GuiConfig.Theme
+    GuiConfig.ThemeTransparency = GuiConfig.ThemeTransparency or 0.15
 
-    CURRENT_VERSION        = GuiConfig.Version
+    CURRENT_VERSION = GuiConfig.Version
     LoadConfigFromFile()
 
     local GuiFunc = {}
+    local Tabs = {}
 
-    local Triplesixxxx = Instance.new("ScreenGui");
-    local DropShadowHolder = Instance.new("Frame");
-    local DropShadow = Instance.new("ImageLabel");
-    local Main = Instance.new("Frame");
-    local UICorner = Instance.new("UICorner");
-    local Top = Instance.new("Frame");
-    local TextLabel = Instance.new("TextLabel");
-    local UICorner1 = Instance.new("UICorner");
-    local TextLabel1 = Instance.new("TextLabel");
-    local Close = Instance.new("TextButton");
-    local ImageLabel1 = Instance.new("ImageLabel");
-    local Min = Instance.new("TextButton");
-    local ImageLabel2 = Instance.new("ImageLabel");
-    local LayersTab = Instance.new("Frame");
-    local UICorner2 = Instance.new("UICorner");
-    local DecideFrame = Instance.new("Frame");
-    local Layers = Instance.new("Frame");
-    local UICorner6 = Instance.new("UICorner");
-    local NameTab = Instance.new("TextLabel");
-    local LayersReal = Instance.new("Frame");
-    local LayersFolder = Instance.new("Folder");
-    local LayersPageLayout = Instance.new("UIPageLayout");
+    local StreeHubUI = Instance.new("ScreenGui")
+    local DropShadowHolder = Instance.new("Frame")
+    local DropShadow = Instance.new("ImageLabel")
+    local Main = Instance.new("Frame")
+    local UICorner = Instance.new("UICorner")
+    local Top = Instance.new("Frame")
+    local TextLabel = Instance.new("TextLabel")
+    local UICorner1 = Instance.new("UICorner")
+    local TextLabel1 = Instance.new("TextLabel")
+    local Close = Instance.new("TextButton")
+    local ImageLabel1 = Instance.new("ImageLabel")
+    local Min = Instance.new("TextButton")
+    local ImageLabel2 = Instance.new("ImageLabel")
+    local LayersTab = Instance.new("Frame")
+    local UICorner2 = Instance.new("UICorner")
+    local DecideFrame = Instance.new("Frame")
+    local Layers = Instance.new("Frame")
+    local UICorner6 = Instance.new("UICorner")
+    local NameTab = Instance.new("TextLabel")
+    local LayersReal = Instance.new("Frame")
+    local LayersFolder = Instance.new("Folder")
+    local LayersPageLayout = Instance.new("UIPageLayout")
 
-    Triplesixxxx.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    Triplesixxxx.Name = "Triplesixxxx"
-    Triplesixxxx.ResetOnSpawn = false
-    Triplesixxxx.Parent = game:GetService("CoreGui")
+    StreeHubUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    StreeHubUI.Name = "StreeHub"
+    StreeHubUI.ResetOnSpawn = false
+    StreeHubUI.Parent = game:GetService("CoreGui")
 
     DropShadowHolder.BackgroundTransparency = 1
     DropShadowHolder.BorderSizePixel = 0
     DropShadowHolder.AnchorPoint = Vector2.new(0.5, 0.5)
     DropShadowHolder.Position = UDim2.new(0.5, 0, 0.5, 0)
+    
     if isMobile then
         DropShadowHolder.Size = safeSize(470, 270)
     else
         DropShadowHolder.Size = safeSize(640, 400)
     end
+    
     DropShadowHolder.ZIndex = 0
     DropShadowHolder.Name = "DropShadowHolder"
-    DropShadowHolder.Parent = Triplesixxxx
+    DropShadowHolder.Parent = StreeHubUI
 
-    DropShadowHolder.Position = UDim2.new(0, (Triplesixxxx.AbsoluteSize.X // 2 - DropShadowHolder.Size.X.Offset // 2), 0,
-        (Triplesixxxx.AbsoluteSize.Y // 2 - DropShadowHolder.Size.Y.Offset // 2))
     DropShadow.Image = "rbxassetid://6015897843"
     DropShadow.ImageColor3 = Color3.fromRGB(15, 15, 15)
     DropShadow.ImageTransparency = 1
@@ -546,7 +532,6 @@ function Triplesixxx:Window(GuiConfig)
     DropShadow.Parent = DropShadowHolder
 
     if GuiConfig.Theme then
-        Main:Destroy()
         Main = Instance.new("ImageLabel")
         Main.Image = "rbxassetid://" .. GuiConfig.Theme
         Main.ScaleType = Enum.ScaleType.Crop
@@ -721,8 +706,8 @@ function Triplesixxx:Window(GuiConfig)
     LayersPageLayout.EasingDirection = Enum.EasingDirection.InOut
     LayersPageLayout.EasingStyle = Enum.EasingStyle.Quad
 
-    local ScrollTab = Instance.new("ScrollingFrame");
-    local UIListLayout = Instance.new("UIListLayout");
+    local ScrollTab = Instance.new("ScrollingFrame")
+    local UIListLayout = Instance.new("UIListLayout")
 
     ScrollTab.CanvasSize = UDim2.new(0, 0, 1.10000002, 0)
     ScrollTab.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
@@ -749,12 +734,13 @@ function Triplesixxx:Window(GuiConfig)
         end
         ScrollTab.CanvasSize = UDim2.new(0, 0, 0, OffsetY)
     end
+    
     ScrollTab.ChildAdded:Connect(UpdateSize1)
     ScrollTab.ChildRemoved:Connect(UpdateSize1)
 
     function GuiFunc:DestroyGui()
-        if CoreGui:FindFirstChild("Triplesixxxx") then
-            Triplesixxxx:Destroy()
+        if CoreGui:FindFirstChild("StreeHub") then
+            StreeHubUI:Destroy()
         end
     end
 
@@ -762,6 +748,7 @@ function Triplesixxx:Window(GuiConfig)
         CircleClick(Min, Mouse.X, Mouse.Y)
         DropShadowHolder.Visible = false
     end)
+    
     Close.Activated:Connect(function()
         CircleClick(Close, Mouse.X, Mouse.Y)
 
@@ -786,7 +773,7 @@ function Triplesixxx:Window(GuiConfig)
         local DialogGlow = Instance.new("Frame")
         DialogGlow.Size = UDim2.new(0, 310, 0, 160)
         DialogGlow.Position = UDim2.new(0.5, -155, 0.5, -80)
-        DialogGlow.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        DialogGlow.BackgroundColor3 = Color3.fromRGB(57, 255, 20)
         DialogGlow.BackgroundTransparency = 0.75
         DialogGlow.BorderSizePixel = 0
         DialogGlow.ZIndex = 50
@@ -797,11 +784,11 @@ function Triplesixxx:Window(GuiConfig)
 
         local Gradient = Instance.new("UIGradient")
         Gradient.Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0.0, Color3.fromRGB(255, 0, 0)),
+            ColorSequenceKeypoint.new(0.0, Color3.fromRGB(57, 255, 20)),
             ColorSequenceKeypoint.new(0.25, Color3.fromRGB(255, 255, 255)),
-            ColorSequenceKeypoint.new(0.5, Color3.fromRGB(200, 0, 0)),
+            ColorSequenceKeypoint.new(0.5, Color3.fromRGB(40, 180, 15)),
             ColorSequenceKeypoint.new(0.75, Color3.fromRGB(255, 255, 255)),
-            ColorSequenceKeypoint.new(1.0, Color3.fromRGB(255, 0, 0))
+            ColorSequenceKeypoint.new(1.0, Color3.fromRGB(57, 255, 20))
         })
         Gradient.Rotation = 90
         Gradient.Parent = DialogGlow
@@ -811,7 +798,7 @@ function Triplesixxx:Window(GuiConfig)
         Title.Position = UDim2.new(0, 0, 0, 4)
         Title.BackgroundTransparency = 1
         Title.Font = Enum.Font.GothamBold
-        Title.Text = "Triplesixxx Window"
+        Title.Text = "StreeHub Window"
         Title.TextSize = 22
         Title.TextColor3 = Color3.fromRGB(255, 255, 255)
         Title.ZIndex = 52
@@ -832,7 +819,7 @@ function Triplesixxx:Window(GuiConfig)
         local Yes = Instance.new("TextButton")
         Yes.Size = UDim2.new(0.45, -10, 0, 35)
         Yes.Position = UDim2.new(0.05, 0, 1, -55)
-        Yes.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        Yes.BackgroundColor3 = Color3.fromRGB(57, 255, 20)
         Yes.BackgroundTransparency = 0.935
         Yes.Text = "Yes"
         Yes.Font = Enum.Font.GothamBold
@@ -860,7 +847,7 @@ function Triplesixxx:Window(GuiConfig)
         Instance.new("UICorner", Cancel).CornerRadius = UDim.new(0, 6)
 
         Yes.MouseButton1Click:Connect(function()
-            if Triplesixxxx then Triplesixxxx:Destroy() end
+            StreeHubUI:Destroy()
         end)
 
         Cancel.MouseButton1Click:Connect(function()
@@ -878,14 +865,13 @@ function Triplesixxx:Window(GuiConfig)
         end
     end)
 
-    DropShadowHolder.Size = UDim2.new(0, 115 + TextLabel.TextBounds.X + 1 + TextLabel1.TextBounds.X, 0, 350)
     MakeDraggable(Top, DropShadowHolder)
 
-    local MoreBlur = Instance.new("Frame");
-    local DropShadowHolder1 = Instance.new("Frame");
-    local DropShadow1 = Instance.new("ImageLabel");
-    local UICorner28 = Instance.new("UICorner");
-    local ConnectButton = Instance.new("TextButton");
+    local MoreBlur = Instance.new("Frame")
+    local DropShadowHolder1 = Instance.new("Frame")
+    local DropShadow1 = Instance.new("ImageLabel")
+    local UICorner28 = Instance.new("UICorner")
+    local ConnectButton = Instance.new("TextButton")
 
     MoreBlur.AnchorPoint = Vector2.new(1, 1)
     MoreBlur.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -934,12 +920,12 @@ function Triplesixxx:Window(GuiConfig)
     ConnectButton.Name = "ConnectButton"
     ConnectButton.Parent = MoreBlur
 
-    local DropdownSelect = Instance.new("Frame");
-    local UICorner36 = Instance.new("UICorner");
-    local UIStroke14 = Instance.new("UIStroke");
-    local DropdownSelectReal = Instance.new("Frame");
-    local DropdownFolder = Instance.new("Folder");
-    local DropPageLayout = Instance.new("UIPageLayout");
+    local DropdownSelect = Instance.new("Frame")
+    local UICorner36 = Instance.new("UICorner")
+    local UIStroke14 = Instance.new("UIStroke")
+    local DropdownSelectReal = Instance.new("Frame")
+    local DropdownFolder = Instance.new("Folder")
+    local DropPageLayout = Instance.new("UIPageLayout")
 
     DropdownSelect.AnchorPoint = Vector2.new(1, 0.5)
     DropdownSelect.BackgroundColor3 = Color3.fromRGB(30.00000011175871, 30.00000011175871, 30.00000011175871)
@@ -960,16 +946,17 @@ function Triplesixxx:Window(GuiConfig)
             MoreBlur.Visible = false
         end
     end)
+    
     UICorner36.CornerRadius = UDim.new(0, 3)
     UICorner36.Parent = DropdownSelect
 
-    UIStroke14.Color = Color3.fromRGB(255, 0, 0)
+    UIStroke14.Color = Color3.fromRGB(57, 255, 20)
     UIStroke14.Thickness = 2.5
     UIStroke14.Transparency = 0.8
     UIStroke14.Parent = DropdownSelect
 
     DropdownSelectReal.AnchorPoint = Vector2.new(0.5, 0.5)
-    DropdownSelectReal.BackgroundColor3 = Color3.fromRGB(98, 0, 0)
+    DropdownSelectReal.BackgroundColor3 = Color3.fromRGB(20, 80, 10)
     DropdownSelectReal.BackgroundTransparency = 0.7
     DropdownSelectReal.BorderColor3 = Color3.fromRGB(0, 0, 0)
     DropdownSelectReal.BorderSizePixel = 0
@@ -990,17 +977,17 @@ function Triplesixxx:Window(GuiConfig)
     DropPageLayout.Archivable = false
     DropPageLayout.Name = "DropPageLayout"
     DropPageLayout.Parent = DropdownFolder
-    --// Tabs
-    local Tabs = {}
+    
     local CountTab = 0
     local CountDropdown = 0
+    
     function Tabs:AddTab(TabConfig)
         local TabConfig = TabConfig or {}
         TabConfig.Name = TabConfig.Name or "Tab"
         TabConfig.Icon = TabConfig.Icon or ""
 
-        local ScrolLayers = Instance.new("ScrollingFrame");
-        local UIListLayout1 = Instance.new("UIListLayout");
+        local ScrolLayers = Instance.new("ScrollingFrame")
+        local UIListLayout1 = Instance.new("UIListLayout")
 
         ScrolLayers.ScrollBarImageColor3 = Color3.fromRGB(80.00000283122063, 80.00000283122063, 80.00000283122063)
         ScrolLayers.ScrollBarThickness = 0
@@ -1018,13 +1005,13 @@ function Triplesixxx:Window(GuiConfig)
         UIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
         UIListLayout1.Parent = ScrolLayers
 
-        local Tab = Instance.new("Frame");
-        local UICorner3 = Instance.new("UICorner");
-        local TabButton = Instance.new("TextButton");
+        local Tab = Instance.new("Frame")
+        local UICorner3 = Instance.new("UICorner")
+        local TabButton = Instance.new("TextButton")
         local TabName = Instance.new("TextLabel")
-        local FeatureImg = Instance.new("ImageLabel");
-        local UIStroke2 = Instance.new("UIStroke");
-        local UICorner4 = Instance.new("UICorner");
+        local FeatureImg = Instance.new("ImageLabel")
+        local UIStroke2 = Instance.new("UIStroke")
+        local UICorner4 = Instance.new("UICorner")
 
         Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         if CountTab == 0 then
@@ -1032,6 +1019,7 @@ function Triplesixxx:Window(GuiConfig)
         else
             Tab.BackgroundTransparency = 0.9990000128746033
         end
+        
         Tab.BorderColor3 = Color3.fromRGB(0, 0, 0)
         Tab.BorderSizePixel = 0
         Tab.LayoutOrder = CountTab
@@ -1077,10 +1065,11 @@ function Triplesixxx:Window(GuiConfig)
         FeatureImg.Size = UDim2.new(0, 16, 0, 16)
         FeatureImg.Name = "FeatureImg"
         FeatureImg.Parent = Tab
+        
         if CountTab == 0 then
             LayersPageLayout:JumpToIndex(0)
             NameTab.Text = TabConfig.Name
-            local ChooseFrame = Instance.new("Frame");
+            local ChooseFrame = Instance.new("Frame")
             ChooseFrame.BackgroundColor3 = GuiConfig.Color
             ChooseFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
             ChooseFrame.BorderSizePixel = 0
@@ -1115,51 +1104,34 @@ function Triplesixxx:Window(GuiConfig)
                     end
                 end
             end
+            
             if FrameChoose ~= nil and Tab.LayoutOrder ~= LayersPageLayout.CurrentPage.LayoutOrder then
                 for _, TabFrame in ScrollTab:GetChildren() do
                     if TabFrame.Name == "Tab" then
-                        TweenService:Create(
-                            TabFrame,
-                            TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
-                            { BackgroundTransparency = 0.9990000128746033 }
-                        ):Play()
+                        TweenService:Create(TabFrame, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.InOut), { BackgroundTransparency = 0.9990000128746033 }):Play()
                     end
                 end
-                TweenService:Create(
-                    Tab,
-                    TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
-                    { BackgroundTransparency = 0.9200000166893005 }
-                ):Play()
-                TweenService:Create(
-                    FrameChoose,
-                    TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-                    { Position = UDim2.new(0, 2, 0, 9 + (33 * Tab.LayoutOrder)) }
-                ):Play()
+                
+                TweenService:Create(Tab, TweenInfo.new(0.6, Enum.EasingStyle.Back, Enum.EasingDirection.InOut), { BackgroundTransparency = 0.9200000166893005 }):Play()
+                TweenService:Create(FrameChoose, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), { Position = UDim2.new(0, 2, 0, 9 + (33 * Tab.LayoutOrder)) }):Play()
                 LayersPageLayout:JumpToIndex(Tab.LayoutOrder)
                 task.wait(0.05)
                 NameTab.Text = TabConfig.Name
-                TweenService:Create(
-                    FrameChoose,
-                    TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-                    { Size = UDim2.new(0, 1, 0, 20) }
-                ):Play()
+                TweenService:Create(FrameChoose, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), { Size = UDim2.new(0, 1, 0, 20) }):Play()
                 task.wait(0.2)
-                TweenService:Create(
-                    FrameChoose,
-                    TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut),
-                    { Size = UDim2.new(0, 1, 0, 12) }
-                ):Play()
+                TweenService:Create(FrameChoose, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), { Size = UDim2.new(0, 1, 0, 12) }):Play()
             end
         end)
-        --// Section
+        
         local Sections = {}
         local CountSection = 0
+        
         function Sections:AddSection(Title, AlwaysOpen)
             local Title = Title or "Title"
-            local Section = Instance.new("Frame");
-            local SectionDecideFrame = Instance.new("Frame");
-            local UICorner1 = Instance.new("UICorner");
-            local UIGradient = Instance.new("UIGradient");
+            local Section = Instance.new("Frame")
+            local SectionDecideFrame = Instance.new("Frame")
+            local UICorner1 = Instance.new("UICorner")
+            local UIGradient = Instance.new("UIGradient")
 
             Section.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Section.BackgroundTransparency = 0.9990000128746033
@@ -1172,13 +1144,12 @@ function Triplesixxx:Window(GuiConfig)
             Section.Name = "Section"
             Section.Parent = ScrolLayers
 
-            local SectionReal = Instance.new("Frame");
-            local UICorner = Instance.new("UICorner");
-            local UIStroke = Instance.new("UIStroke");
-            local SectionButton = Instance.new("TextButton");
-            local FeatureFrame = Instance.new("Frame");
-            local FeatureImg = Instance.new("ImageLabel");
-            local SectionTitle = Instance.new("TextLabel");
+            local SectionReal = Instance.new("Frame")
+            local UICorner = Instance.new("UICorner")
+            local SectionButton = Instance.new("TextButton")
+            local FeatureFrame = Instance.new("Frame")
+            local FeatureImg = Instance.new("ImageLabel")
+            local SectionTitle = Instance.new("TextLabel")
 
             SectionReal.AnchorPoint = Vector2.new(0.5, 0)
             SectionReal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1255,17 +1226,16 @@ function Triplesixxx:Window(GuiConfig)
 
             UICorner1.Parent = SectionDecideFrame
 
-            UIGradient.Color = ColorSequence.new {
+            UIGradient.Color = ColorSequence.new({
                 ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
                 ColorSequenceKeypoint.new(0.5, GuiConfig.Color),
                 ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))
-            }
+            })
             UIGradient.Parent = SectionDecideFrame
 
-            --// Section Add
-            local SectionAdd = Instance.new("Frame");
-            local UICorner8 = Instance.new("UICorner");
-            local UIListLayout2 = Instance.new("UIListLayout");
+            local SectionAdd = Instance.new("Frame")
+            local UICorner8 = Instance.new("UICorner")
+            local UIListLayout2 = Instance.new("UIListLayout")
 
             SectionAdd.AnchorPoint = Vector2.new(0.5, 0)
             SectionAdd.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1307,10 +1277,8 @@ function Triplesixxx:Window(GuiConfig)
                         end
                     end
                     TweenService:Create(FeatureFrame, TweenInfo.new(0.5), { Rotation = 90 }):Play()
-                    TweenService:Create(Section, TweenInfo.new(0.5), { Size = UDim2.new(1, 1, 0, SectionSizeYWitdh) })
-                        :Play()
-                    TweenService:Create(SectionAdd, TweenInfo.new(0.5),
-                        { Size = UDim2.new(1, 0, 0, SectionSizeYWitdh - 38) }):Play()
+                    TweenService:Create(Section, TweenInfo.new(0.5), { Size = UDim2.new(1, 1, 0, SectionSizeYWitdh) }):Play()
+                    TweenService:Create(SectionAdd, TweenInfo.new(0.5), { Size = UDim2.new(1, 0, 0, SectionSizeYWitdh - 38) }):Play()
                     TweenService:Create(SectionDecideFrame, TweenInfo.new(0.5), { Size = UDim2.new(1, 0, 0, 2) }):Play()
                     task.wait(0.5)
                     UpdateSizeScroll()
@@ -1335,8 +1303,7 @@ function Triplesixxx:Window(GuiConfig)
                     if OpenSection then
                         TweenService:Create(FeatureFrame, TweenInfo.new(0.5), { Rotation = 0 }):Play()
                         TweenService:Create(Section, TweenInfo.new(0.5), { Size = UDim2.new(1, 1, 0, 30) }):Play()
-                        TweenService:Create(SectionDecideFrame, TweenInfo.new(0.5), { Size = UDim2.new(0, 0, 0, 2) })
-                            :Play()
+                        TweenService:Create(SectionDecideFrame, TweenInfo.new(0.5), { Size = UDim2.new(0, 0, 0, 2) }):Play()
                         OpenSection = false
                         task.wait(0.5)
                         UpdateSizeScroll()
@@ -1374,11 +1341,14 @@ function Triplesixxx:Window(GuiConfig)
 
             local Items = {}
             local CountItem = 0
-
+            
             function Items:AddParagraph(ParagraphConfig)
                 local ParagraphConfig = ParagraphConfig or {}
                 ParagraphConfig.Title = ParagraphConfig.Title or "Title"
                 ParagraphConfig.Content = ParagraphConfig.Content or "Content"
+                ParagraphConfig.Icon = ParagraphConfig.Icon
+                ParagraphConfig.ButtonText = ParagraphConfig.ButtonText
+                ParagraphConfig.ButtonCallback = ParagraphConfig.ButtonCallback
                 local ParagraphFunc = {}
 
                 local Paragraph = Instance.new("Frame")
@@ -1411,7 +1381,6 @@ function Triplesixxx:Window(GuiConfig)
                     else
                         IconImg.Image = ParagraphConfig.Icon
                     end
-
                     iconOffset = 30
                 end
 
@@ -1447,7 +1416,7 @@ function Triplesixxx:Window(GuiConfig)
                     ParagraphButton = Instance.new("TextButton")
                     ParagraphButton.Position = UDim2.new(0, 10, 0, 42)
                     ParagraphButton.Size = UDim2.new(1, -22, 0, 28)
-                    ParagraphButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                    ParagraphButton.BackgroundColor3 = Color3.fromRGB(57, 255, 20)
                     ParagraphButton.BackgroundTransparency = 0.935
                     ParagraphButton.Font = Enum.Font.GothamBold
                     ParagraphButton.TextSize = 12
@@ -1474,7 +1443,6 @@ function Triplesixxx:Window(GuiConfig)
                 end
 
                 UpdateSize()
-
                 ParagraphContent:GetPropertyChangedSignal("TextBounds"):Connect(UpdateSize)
 
                 function ParagraphFunc:SetContent(content)
@@ -1486,7 +1454,7 @@ function Triplesixxx:Window(GuiConfig)
                 CountItem = CountItem + 1
                 return ParagraphFunc
             end
-
+            
             function Items:AddPanel(PanelConfig)
                 PanelConfig = PanelConfig or {}
                 PanelConfig.Title = PanelConfig.Title or "Title"
@@ -1496,8 +1464,7 @@ function Triplesixxx:Window(GuiConfig)
                 PanelConfig.ButtonText = PanelConfig.Button or PanelConfig.ButtonText or "Confirm"
                 PanelConfig.ButtonCallback = PanelConfig.Callback or PanelConfig.ButtonCallback or function() end
                 PanelConfig.SubButtonText = PanelConfig.SubButton or PanelConfig.SubButtonText or nil
-                PanelConfig.SubButtonCallback = PanelConfig.SubCallback or PanelConfig.SubButtonCallback or
-                    function() end
+                PanelConfig.SubButtonCallback = PanelConfig.SubCallback or PanelConfig.SubButtonCallback or function() end
 
                 local configKey = "Panel_" .. PanelConfig.Title
                 if ConfigData[configKey] ~= nil then
@@ -1507,11 +1474,9 @@ function Triplesixxx:Window(GuiConfig)
                 local PanelFunc = { Value = PanelConfig.Default }
 
                 local baseHeight = 50
-
                 if PanelConfig.Placeholder then
                     baseHeight = baseHeight + 40
                 end
-
                 if PanelConfig.SubButtonText then
                     baseHeight = baseHeight + 40
                 else
@@ -1594,7 +1559,7 @@ function Triplesixxx:Window(GuiConfig)
                 ButtonMain.TextColor3 = Color3.fromRGB(255, 255, 255)
                 ButtonMain.TextSize = 12
                 ButtonMain.TextTransparency = 0.3
-                ButtonMain.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                ButtonMain.BackgroundColor3 = Color3.fromRGB(57, 255, 20)
                 ButtonMain.BackgroundTransparency = 0.935
                 ButtonMain.Size = PanelConfig.SubButtonText and UDim2.new(0.5, -12, 0, 30) or UDim2.new(1, -20, 0, 30)
                 ButtonMain.Position = UDim2.new(0, 10, 0, yBtn)
@@ -1645,7 +1610,7 @@ function Triplesixxx:Window(GuiConfig)
                 CountItem = CountItem + 1
                 return PanelFunc
             end
-
+            
             function Items:AddButton(ButtonConfig)
                 ButtonConfig = ButtonConfig or {}
                 ButtonConfig.Title = ButtonConfig.Title or "Confirm"
@@ -1670,7 +1635,7 @@ function Triplesixxx:Window(GuiConfig)
                 MainButton.TextSize = 12
                 MainButton.TextColor3 = Color3.fromRGB(255, 255, 255)
                 MainButton.TextTransparency = 0.3
-                MainButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                MainButton.BackgroundColor3 = Color3.fromRGB(57, 255, 20)
                 MainButton.BackgroundTransparency = 0.935
                 MainButton.Size = ButtonConfig.SubTitle and UDim2.new(0.5, -8, 1, -10) or UDim2.new(1, -12, 1, -10)
                 MainButton.Position = UDim2.new(0, 6, 0, 5)
@@ -1704,7 +1669,7 @@ function Triplesixxx:Window(GuiConfig)
 
                 CountItem = CountItem + 1
             end
-
+            
             function Items:AddToggle(ToggleConfig)
                 local ToggleConfig = ToggleConfig or {}
                 ToggleConfig.Title = ToggleConfig.Title or "Title"
@@ -1788,8 +1753,7 @@ function Triplesixxx:Window(GuiConfig)
                     ToggleTitle2.Visible = false
                 end
 
-                ToggleContent.Size = UDim2.new(1, -100, 0,
-                    12 + (12 * (ToggleContent.TextBounds.X // ToggleContent.AbsoluteSize.X)))
+                ToggleContent.Size = UDim2.new(1, -100, 0, 12 + (12 * (ToggleContent.TextBounds.X // ToggleContent.AbsoluteSize.X)))
                 ToggleContent.TextWrapped = true
                 if ToggleConfig.Title2 ~= "" then
                     Toggle.Size = UDim2.new(1, 0, 0, ToggleContent.AbsoluteSize.Y + 47)
@@ -1799,8 +1763,7 @@ function Triplesixxx:Window(GuiConfig)
 
                 ToggleContent:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
                     ToggleContent.TextWrapped = false
-                    ToggleContent.Size = UDim2.new(1, -100, 0,
-                        12 + (12 * (ToggleContent.TextBounds.X // ToggleContent.AbsoluteSize.X)))
+                    ToggleContent.Size = UDim2.new(1, -100, 0, 12 + (12 * (ToggleContent.TextBounds.X // ToggleContent.AbsoluteSize.X)))
                     if ToggleConfig.Title2 ~= "" then
                         Toggle.Size = UDim2.new(1, 0, 0, ToggleContent.AbsoluteSize.Y + 47)
                     else
@@ -1857,20 +1820,14 @@ function Triplesixxx:Window(GuiConfig)
                     SaveConfig()
                     if Value then
                         TweenService:Create(ToggleTitle, TweenInfo.new(0.2), { TextColor3 = GuiConfig.Color }):Play()
-                        TweenService:Create(ToggleCircle, TweenInfo.new(0.2), { Position = UDim2.new(0, 15, 0, 0) })
-                            :Play()
-                        TweenService:Create(UIStroke8, TweenInfo.new(0.2), { Color = GuiConfig.Color, Transparency = 0 })
-                            :Play()
-                        TweenService:Create(FeatureFrame2, TweenInfo.new(0.2),
-                            { BackgroundColor3 = GuiConfig.Color, BackgroundTransparency = 0 }):Play()
+                        TweenService:Create(ToggleCircle, TweenInfo.new(0.2), { Position = UDim2.new(0, 15, 0, 0) }):Play()
+                        TweenService:Create(UIStroke8, TweenInfo.new(0.2), { Color = GuiConfig.Color, Transparency = 0 }):Play()
+                        TweenService:Create(FeatureFrame2, TweenInfo.new(0.2), { BackgroundColor3 = GuiConfig.Color, BackgroundTransparency = 0 }):Play()
                     else
-                        TweenService:Create(ToggleTitle, TweenInfo.new(0.2),
-                            { TextColor3 = Color3.fromRGB(230, 230, 230) }):Play()
+                        TweenService:Create(ToggleTitle, TweenInfo.new(0.2), { TextColor3 = Color3.fromRGB(230, 230, 230) }):Play()
                         TweenService:Create(ToggleCircle, TweenInfo.new(0.2), { Position = UDim2.new(0, 0, 0, 0) }):Play()
-                        TweenService:Create(UIStroke8, TweenInfo.new(0.2),
-                            { Color = Color3.fromRGB(255, 255, 255), Transparency = 0.9 }):Play()
-                        TweenService:Create(FeatureFrame2, TweenInfo.new(0.2),
-                            { BackgroundColor3 = Color3.fromRGB(255, 255, 255), BackgroundTransparency = 0.92 }):Play()
+                        TweenService:Create(UIStroke8, TweenInfo.new(0.2), { Color = Color3.fromRGB(255, 255, 255), Transparency = 0.9 }):Play()
+                        TweenService:Create(FeatureFrame2, TweenInfo.new(0.2), { BackgroundColor3 = Color3.fromRGB(255, 255, 255), BackgroundTransparency = 0.92 }):Play()
                     end
                 end
 
@@ -1879,7 +1836,7 @@ function Triplesixxx:Window(GuiConfig)
                 Elements[configKey] = ToggleFunc
                 return ToggleFunc
             end
-
+            
             function Items:AddSlider(SliderConfig)
                 local SliderConfig = SliderConfig or {}
                 SliderConfig.Title = SliderConfig.Title or "Slider"
@@ -1897,22 +1854,22 @@ function Triplesixxx:Window(GuiConfig)
 
                 local SliderFunc = { Value = SliderConfig.Default }
 
-                local Slider = Instance.new("Frame");
-                local UICorner15 = Instance.new("UICorner");
-                local SliderTitle = Instance.new("TextLabel");
-                local SliderContent = Instance.new("TextLabel");
-                local SliderInput = Instance.new("Frame");
-                local UICorner16 = Instance.new("UICorner");
-                local TextBox = Instance.new("TextBox");
-                local SliderFrame = Instance.new("Frame");
-                local UICorner17 = Instance.new("UICorner");
-                local SliderDraggable = Instance.new("Frame");
-                local UICorner18 = Instance.new("UICorner");
-                local UIStroke5 = Instance.new("UIStroke");
-                local SliderCircle = Instance.new("Frame");
-                local UICorner19 = Instance.new("UICorner");
-                local UIStroke6 = Instance.new("UIStroke");
-                local UIStroke7 = Instance.new("UIStroke");
+                local Slider = Instance.new("Frame")
+                local UICorner15 = Instance.new("UICorner")
+                local SliderTitle = Instance.new("TextLabel")
+                local SliderContent = Instance.new("TextLabel")
+                local SliderInput = Instance.new("Frame")
+                local UICorner16 = Instance.new("UICorner")
+                local TextBox = Instance.new("TextBox")
+                local SliderFrame = Instance.new("Frame")
+                local UICorner17 = Instance.new("UICorner")
+                local SliderDraggable = Instance.new("Frame")
+                local UICorner18 = Instance.new("UICorner")
+                local UIStroke5 = Instance.new("UIStroke")
+                local SliderCircle = Instance.new("Frame")
+                local UICorner19 = Instance.new("UICorner")
+                local UIStroke6 = Instance.new("UIStroke")
+                local UIStroke7 = Instance.new("UIStroke")
 
                 Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 Slider.BackgroundTransparency = 0.9350000023841858
@@ -1957,15 +1914,13 @@ function Triplesixxx:Window(GuiConfig)
                 SliderContent.Name = "SliderContent"
                 SliderContent.Parent = Slider
 
-                SliderContent.Size = UDim2.new(1, -180, 0,
-                    12 + (12 * (SliderContent.TextBounds.X // SliderContent.AbsoluteSize.X)))
+                SliderContent.Size = UDim2.new(1, -180, 0, 12 + (12 * (SliderContent.TextBounds.X // SliderContent.AbsoluteSize.X)))
                 SliderContent.TextWrapped = true
                 Slider.Size = UDim2.new(1, 0, 0, SliderContent.AbsoluteSize.Y + 33)
 
                 SliderContent:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
                     SliderContent.TextWrapped = false
-                    SliderContent.Size = UDim2.new(1, -180, 0,
-                        12 + (12 * (SliderContent.TextBounds.X // SliderContent.AbsoluteSize.X)))
+                    SliderContent.Size = UDim2.new(1, -180, 0, 12 + (12 * (SliderContent.TextBounds.X // SliderContent.AbsoluteSize.X)))
                     Slider.Size = UDim2.new(1, 0, 0, SliderContent.AbsoluteSize.Y + 33)
                     SliderContent.TextWrapped = true
                     UpdateSizeSection()
@@ -2042,15 +1997,12 @@ function Triplesixxx:Window(GuiConfig)
                     end
                     return Result
                 end
+                
                 function SliderFunc:Set(Value)
                     Value = math.clamp(Round(Value, SliderConfig.Increment), SliderConfig.Min, SliderConfig.Max)
                     SliderFunc.Value = Value
                     TextBox.Text = tostring(Value)
-                    TweenService:Create(
-                        SliderDraggable,
-                        TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        { Size = UDim2.fromScale((Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1) }
-                    ):Play()
+                    TweenService:Create(SliderDraggable, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.fromScale((Value - SliderConfig.Min) / (SliderConfig.Max - SliderConfig.Min), 1) }):Play()
 
                     SliderConfig.Callback(Value)
                     ConfigData[configKey] = Value
@@ -2060,16 +2012,8 @@ function Triplesixxx:Window(GuiConfig)
                 SliderFrame.InputBegan:Connect(function(Input)
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
                         Dragging = true
-                        TweenService:Create(
-                            SliderCircle,
-                            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            { Size = UDim2.new(0, 14, 0, 14) }
-                        ):Play()
-                        local SizeScale = math.clamp(
-                            (Input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X,
-                            0,
-                            1
-                        )
+                        TweenService:Create(SliderCircle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.new(0, 14, 0, 14) }):Play()
+                        local SizeScale = math.clamp((Input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1)
                         SliderFunc:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale))
                     end
                 end)
@@ -2078,21 +2022,13 @@ function Triplesixxx:Window(GuiConfig)
                     if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
                         Dragging = false
                         SliderConfig.Callback(SliderFunc.Value)
-                        TweenService:Create(
-                            SliderCircle,
-                            TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            { Size = UDim2.new(0, 8, 0, 8) }
-                        ):Play()
+                        TweenService:Create(SliderCircle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.new(0, 8, 0, 8) }):Play()
                     end
                 end)
 
                 UserInputService.InputChanged:Connect(function(Input)
                     if Dragging and (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) then
-                        local SizeScale = math.clamp(
-                            (Input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X,
-                            0,
-                            1
-                        )
+                        local SizeScale = math.clamp((Input.Position.X - SliderFrame.AbsolutePosition.X) / SliderFrame.AbsoluteSize.X, 0, 1)
                         SliderFunc:Set(SliderConfig.Min + ((SliderConfig.Max - SliderConfig.Min) * SizeScale))
                     end
                 end)
@@ -2106,12 +2042,13 @@ function Triplesixxx:Window(GuiConfig)
                         SliderFunc:Set(SliderConfig.Min)
                     end
                 end)
+                
                 SliderFunc:Set(SliderConfig.Default)
                 CountItem = CountItem + 1
                 Elements[configKey] = SliderFunc
                 return SliderFunc
             end
-
+            
             function Items:AddInput(InputConfig)
                 local InputConfig = InputConfig or {}
                 InputConfig.Title = InputConfig.Title or "Title"
@@ -2126,13 +2063,13 @@ function Triplesixxx:Window(GuiConfig)
 
                 local InputFunc = { Value = InputConfig.Default }
 
-                local Input = Instance.new("Frame");
-                local UICorner12 = Instance.new("UICorner");
-                local InputTitle = Instance.new("TextLabel");
-                local InputContent = Instance.new("TextLabel");
-                local InputFrame = Instance.new("Frame");
-                local UICorner13 = Instance.new("UICorner");
-                local InputTextBox = Instance.new("TextBox");
+                local Input = Instance.new("Frame")
+                local UICorner12 = Instance.new("UICorner")
+                local InputTitle = Instance.new("TextLabel")
+                local InputContent = Instance.new("TextLabel")
+                local InputFrame = Instance.new("Frame")
+                local UICorner13 = Instance.new("UICorner")
+                local InputTextBox = Instance.new("TextBox")
 
                 Input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 Input.BackgroundTransparency = 0.9350000023841858
@@ -2178,15 +2115,13 @@ function Triplesixxx:Window(GuiConfig)
                 InputContent.Name = "InputContent"
                 InputContent.Parent = Input
 
-                InputContent.Size = UDim2.new(1, -180, 0,
-                    12 + (12 * (InputContent.TextBounds.X // InputContent.AbsoluteSize.X)))
+                InputContent.Size = UDim2.new(1, -180, 0, 12 + (12 * (InputContent.TextBounds.X // InputContent.AbsoluteSize.X)))
                 InputContent.TextWrapped = true
                 Input.Size = UDim2.new(1, 0, 0, InputContent.AbsoluteSize.Y + 33)
 
                 InputContent:GetPropertyChangedSignal("AbsoluteSize"):Connect(function()
                     InputContent.TextWrapped = false
-                    InputContent.Size = UDim2.new(1, -180, 0,
-                        12 + (12 * (InputContent.TextBounds.X // InputContent.AbsoluteSize.X)))
+                    InputContent.Size = UDim2.new(1, -180, 0, 12 + (12 * (InputContent.TextBounds.X // InputContent.AbsoluteSize.X)))
                     Input.Size = UDim2.new(1, 0, 0, InputContent.AbsoluteSize.Y + 33)
                     InputContent.TextWrapped = true
                     UpdateSizeSection()
@@ -2208,8 +2143,7 @@ function Triplesixxx:Window(GuiConfig)
 
                 InputTextBox.CursorPosition = -1
                 InputTextBox.Font = Enum.Font.GothamBold
-                InputTextBox.PlaceholderColor3 = Color3.fromRGB(120.00000044703484, 120.00000044703484,
-                    120.00000044703484)
+                InputTextBox.PlaceholderColor3 = Color3.fromRGB(120.00000044703484, 120.00000044703484, 120.00000044703484)
                 InputTextBox.PlaceholderText = "Input Here"
                 InputTextBox.Text = InputConfig.Default
                 InputTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -2224,6 +2158,7 @@ function Triplesixxx:Window(GuiConfig)
                 InputTextBox.Size = UDim2.new(1, -10, 1, -8)
                 InputTextBox.Name = "InputTextBox"
                 InputTextBox.Parent = InputFrame
+                
                 function InputFunc:Set(Value)
                     InputTextBox.Text = Value
                     InputFunc.Value = Value
@@ -2237,6 +2172,7 @@ function Triplesixxx:Window(GuiConfig)
                 InputTextBox.FocusLost:Connect(function()
                     InputFunc:Set(InputTextBox.Text)
                 end)
+                
                 CountItem = CountItem + 1
                 Elements[configKey] = InputFunc
                 return InputFunc
@@ -2325,8 +2261,7 @@ function Triplesixxx:Window(GuiConfig)
                         MoreBlur.Visible = true
                         DropPageLayout:JumpToIndex(SelectOptionsFrame.LayoutOrder)
                         TweenService:Create(MoreBlur, TweenInfo.new(0.3), { BackgroundTransparency = 1 }):Play()
-                        TweenService:Create(DropdownSelect, TweenInfo.new(0.3), { Position = UDim2.new(1, -11, 0.5, 0) })
-                            :Play()
+                        TweenService:Create(DropdownSelect, TweenInfo.new(0.3), { Position = UDim2.new(1, -11, 0.5, 0) }):Play()
                     end
                 end)
 
@@ -2508,29 +2443,22 @@ function Triplesixxx:Window(GuiConfig)
                     for _, Drop in ScrollSelect:GetChildren() do
                         if Drop.Name == "Option" and Drop:FindFirstChild("OptionText") then
                             local v = Drop:GetAttribute("RealValue")
-                            local selected = DropdownConfig.Multi and table.find(DropdownFunc.Value, v) or
-                                DropdownFunc.Value == v
+                            local selected = DropdownConfig.Multi and table.find(DropdownFunc.Value, v) or DropdownFunc.Value == v
 
                             if selected then
-                                TweenService:Create(Drop.ChooseFrame, TweenInfo.new(0.2),
-                                    { Size = UDim2.new(0, 1, 0, 12) }):Play()
-                                TweenService:Create(Drop.ChooseFrame.UIStroke, TweenInfo.new(0.2), { Transparency = 0 })
-                                    :Play()
+                                TweenService:Create(Drop.ChooseFrame, TweenInfo.new(0.2), { Size = UDim2.new(0, 1, 0, 12) }):Play()
+                                TweenService:Create(Drop.ChooseFrame.UIStroke, TweenInfo.new(0.2), { Transparency = 0 }):Play()
                                 TweenService:Create(Drop, TweenInfo.new(0.2), { BackgroundTransparency = 0.935 }):Play()
                                 table.insert(texts, Drop.OptionText.Text)
                             else
-                                TweenService:Create(Drop.ChooseFrame, TweenInfo.new(0.1),
-                                    { Size = UDim2.new(0, 0, 0, 0) }):Play()
-                                TweenService:Create(Drop.ChooseFrame.UIStroke, TweenInfo.new(0.1),
-                                    { Transparency = 0.999 }):Play()
+                                TweenService:Create(Drop.ChooseFrame, TweenInfo.new(0.1), { Size = UDim2.new(0, 0, 0, 0) }):Play()
+                                TweenService:Create(Drop.ChooseFrame.UIStroke, TweenInfo.new(0.1), { Transparency = 0.999 }):Play()
                                 TweenService:Create(Drop, TweenInfo.new(0.1), { BackgroundTransparency = 0.999 }):Play()
                             end
                         end
                     end
 
-                    OptionSelecting.Text = (#texts == 0)
-                        and (DropdownConfig.Multi and "Select Options" or "Select Option")
-                        or table.concat(texts, ", ")
+                    OptionSelecting.Text = (#texts == 0) and (DropdownConfig.Multi and "Select Options" or "Select Option") or table.concat(texts, ", ")
 
                     if DropdownConfig.Callback then
                         if DropdownConfig.Multi then
@@ -2568,7 +2496,7 @@ function Triplesixxx:Window(GuiConfig)
                 Elements[configKey] = DropdownFunc
                 return DropdownFunc
             end
-
+            
             function Items:AddDivider()
                 local Divider = Instance.new("Frame")
                 Divider.Name = "Divider"
@@ -2582,11 +2510,11 @@ function Triplesixxx:Window(GuiConfig)
                 Divider.LayoutOrder = CountItem
 
                 local UIGradient = Instance.new("UIGradient")
-                UIGradient.Color = ColorSequence.new {
+                UIGradient.Color = ColorSequence.new({
                     ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
                     ColorSequenceKeypoint.new(0.5, GuiConfig.Color),
                     ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 20))
-                }
+                })
                 UIGradient.Parent = Divider
 
                 local UICorner = Instance.new("UICorner")
@@ -2596,7 +2524,7 @@ function Triplesixxx:Window(GuiConfig)
                 CountItem = CountItem + 1
                 return Divider
             end
-
+            
             function Items:AddSubSection(title)
                 title = title or "Sub Section"
 
@@ -2622,7 +2550,7 @@ function Triplesixxx:Window(GuiConfig)
                 Label.Size = UDim2.new(1, -20, 1, 0)
                 Label.BackgroundTransparency = 1
                 Label.Font = Enum.Font.GothamBold
-                Label.Text = "ââ [ " .. title .. " ] ââ"
+                Label.Text = "── [ " .. title .. " ] ──"
                 Label.TextColor3 = Color3.fromRGB(230, 230, 230)
                 Label.TextSize = 12
                 Label.TextXAlignment = Enum.TextXAlignment.Left
@@ -2636,28 +2564,25 @@ function Triplesixxx:Window(GuiConfig)
         end
 
         CountTab = CountTab + 1
-        local safeName = TabConfig.Name:gsub("%s+", "_")
-        _G[safeName] = Sections
         return Sections
     end
 
-    -- Buat instance untuk WalvyCommunity Button
-    local WalvyCommunity = Instance.new("ScreenGui")
+    local StreeHubButton = Instance.new("ScreenGui")
     local Button = Instance.new("ImageButton")
     local Corner = Instance.new("UICorner")
     local Scale = Instance.new("UIScale")
 
-    WalvyCommunity.Name = 'WalvyCommunityButton'
-    WalvyCommunity.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    WalvyCommunity.ResetOnSpawn = false
-    WalvyCommunity.Parent = game:GetService('CoreGui')
+    StreeHubButton.Name = "StreeHubButton"
+    StreeHubButton.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    StreeHubButton.ResetOnSpawn = false
+    StreeHubButton.Parent = game:GetService('CoreGui')
 
-    Button.Name = 'WalvyCommunity'
-    Button.Parent = WalvyCommunity
+    Button.Name = 'StreeHub'
+    Button.Parent = StreeHubButton
     Button.BackgroundTransparency = 1
     Button.Size = UDim2.new(0, 60, 0, 60)
     Button.Position = UDim2.new(0, 10, 0, 60)
-    Button.Image = 'rbxassetid://107816383763884'
+    Button.Image = 'rbxassetid://107819383763884'
     Button.Draggable = true
 
     Corner.CornerRadius = UDim.new(0, 16)
@@ -2665,10 +2590,8 @@ function Triplesixxx:Window(GuiConfig)
     Scale.Scale = 1
     Scale.Parent = Button
 
-    -- Variabel untuk melacak status window
     local isWindowOpen = true
 
-    -- Fungsi untuk menangani klik tombol
     Button.MouseButton1Click:Connect(function()
         if isWindowOpen then
             if DropShadowHolder then
@@ -2682,7 +2605,6 @@ function Triplesixxx:Window(GuiConfig)
         isWindowOpen = not isWindowOpen
     end)
 
-    -- Animasi hover
     Button.MouseEnter:Connect(function()
         TweenService:Create(Scale, TweenInfo.new(0.1), { Scale = 1.2 }):Play()
     end)
@@ -2691,26 +2613,26 @@ function Triplesixxx:Window(GuiConfig)
         TweenService:Create(Scale, TweenInfo.new(0.1), { Scale = 1 }):Play()
     end)
 
-    -- Hancurkan tombol ketika window dihancurkan
     function GuiFunc:OnDestroy(callback)
         if callback then
             Close.Activated:Connect(function()
                 callback()
-                if WalvyCommunity then
-                    WalvyCommunity:Destroy()
+                if StreeHubUI then
+                    StreeHubUI:Destroy()
                 end
             end)
         end
     end
 
-    -- Gabungkan GuiFunc ke Tabs
     for k, v in pairs(GuiFunc) do
         Tabs[k] = v
     end
 
+    LoadConfigElements()
+    
     return Tabs
 end
 
 LoadConfigElements()
 
-return Triplesixxx
+return StreeHub
